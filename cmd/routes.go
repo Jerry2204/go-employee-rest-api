@@ -1,9 +1,11 @@
 package main
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/Jerry2204/go-employee-rest-api/handlers"
+	"github.com/gofiber/fiber/v2"
+)
 
 func setupRoutes(app *fiber.App) {
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Jerry here")
-	})
+	employeeGroup := app.Group("/employees")
+	employeeGroup.Get("/", handlers.GetAllEmployees)
 }
