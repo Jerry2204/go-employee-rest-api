@@ -8,8 +8,8 @@ import (
 
 type Employee struct {
 	gorm.Model
-	FirstName string    `json:"firstName" gorm:"text;not null;default:null"`
-	LastName  string    `json:"lastName" gorm:"text;not null;default:null"`
-	Email     string    `json:"email" gorm:"text;not null;default:null"`
-	HireDate  time.Time `json:"hireDate" gorm:"date;not null;default:null"`
+	FirstName string `json:"firstName" gorm:"text;not null;default:null"`
+	LastName  string `json:"lastName" gorm:"text;not null;default:null"`
+	Email     string `json:"email" gorm:"text;not null;default:null"`
+	HireDate  time.Time
 }

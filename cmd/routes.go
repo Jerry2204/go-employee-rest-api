@@ -8,4 +8,6 @@ import (
 func setupRoutes(app *fiber.App) {
 	employeeGroup := app.Group("/employees")
 	employeeGroup.Get("/", handlers.GetAllEmployees)
+	employeeGroup.Get("/:id", handlers.GetEmployeeById)
+	employeeGroup.Post("/", handlers.CreateEmployee)
 }
