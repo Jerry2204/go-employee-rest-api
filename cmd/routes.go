@@ -10,4 +10,6 @@ func setupRoutes(app *fiber.App) {
 	employeeGroup.Get("/", handlers.GetAllEmployees)
 	employeeGroup.Get("/:id", handlers.GetEmployeeById)
 	employeeGroup.Post("/", handlers.CreateEmployee)
+	employeeGroup.Put("/:id", handlers.UpdateEmployee)
+	employeeGroup.Delete("/:id", handlers.DeleteEmpoyee)
 }
