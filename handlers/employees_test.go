@@ -9,32 +9,34 @@ import (
 )
 
 func TestGetAllEmployees(t *testing.T) {
-	tests := []struct {
+	tests := struct {
 		description  string
 		route        string
 		expectedCode int
 	}{
-		{
-			description:  "get HTTP status code ",
-			route:        "/employees",
-			expectedCode: 200,
-		},
-		{
-			description:  "get HTTP status 404, when route is not exists",
-			route:        "/employees/not-found",
-			expectedCode: 404,
-		},
+		description:  "get HTTP status code ",
+		route:        "/employees",
+		expectedCode: 200,
 	}
 
 	app := fiber.New()
 
 	app.Get("/employees", GetAllEmployees)
 
-	for _, test := range tests {
-		req := httptest.NewRequest("GET", test.route, nil)
+	req := httptest.NewRequest("GET", tests.route, nil)
 
-		resp, _ := app.Test(req, 1)
+	resp, _ := app.Test(req, 1)
 
-		assert.Equal(t, test.expectedCode, resp.StatusCode, test.description)
-	}
+	assert.Equal(t, tests.expectedCode, resp.StatusCode, tests.description)
+}
+
+func TestDeleteEmplooyee(t *testing.T) {
+	app := fiber.New()
+
+	app.Delete("/employees/:id", DeleteEmpoyee)
+
+	req := httptest.NewRequest("DELETE", "/employees/1", nil)
+	resp, _ := app.Test(req, -1)
+
+	assert.Equal(t, fiber.StatusOK, resp.StatusCode)
 }

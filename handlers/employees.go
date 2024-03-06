@@ -13,6 +13,7 @@ var validate = validator.New()
 
 func GetAllEmployees(c *fiber.Ctx) error {
 	employees := []models.Employee{}
+
 	database.DB.Db.Find(&employees)
 
 	if len(employees) > 0 {
@@ -107,7 +108,7 @@ func DeleteEmpoyee(c *fiber.Ctx) error {
 	var employee models.Employee
 
 	if err := database.DB.Db.First(&employee, id).Error; err != nil {
-		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{ 
 			"status": "error",
 			"error":  "Data Not Found!",
 		})
