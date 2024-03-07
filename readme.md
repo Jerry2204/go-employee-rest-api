@@ -44,6 +44,7 @@ This document provides instructions on how to set up and run this Golang applica
    1. docker-compose down
    2. docker compose run --service-ports api bash
    3. go get -u -v -f all
+   4. exit
 
 3. After that you should build and start the golang application again:
 
