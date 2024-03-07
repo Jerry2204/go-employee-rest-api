@@ -9,7 +9,7 @@ This document provides instructions on how to set up and run this Golang applica
 ## Cloning the Repository
 1. Run the following command to clone this project to your local machine:
    ```bash
-   git clone https://github.com/Jerry2204/go-employee-rest-api
+   git clone --branch middle-developer-test https://github.com/Jerry2204/go-employee-rest-api.git
    ```
 2. Navigate to the project folder:
    ```bash
@@ -38,10 +38,20 @@ This document provides instructions on how to set up and run this Golang applica
    ```bash
    docker-compose up --build
 
-1. This Golang application should now be running inside a Docker container. You can access it at http://localhost:8080 in your web browser or you can access the API using your API Management Tools.
+2. If there is an error when you start the command above and application not running, you should follow this step by step:
+
+   ```bash
+   1. docker-compose down
+   2. docker compose run --service-ports api bash
+   3. go get -u -v -f all
+   4. exit
+
+3. After that you should build and start the golang application again:
 
    ```bash
    docker-compose up --build
+
+4. This Golang application should now be running inside a Docker container. You can access it at http://localhost:8080 in your web browser or you can access the API using your API Management Tools.
 
 ## Stopping This Golang Application
 To stop and remove the PostgreSQL and Golang containers, use the following command:
